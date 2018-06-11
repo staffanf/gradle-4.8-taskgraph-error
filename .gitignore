@@ -1,0 +1,8 @@
+/.idea/
+/.gradle/
+/build/
+/out/
+/.git/
+
+# Cache of project
+.gradletasknamecache
