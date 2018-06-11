@@ -1,0 +1,44 @@
+plugins {
+  id "groovy"
+  id "java-gradle-plugin"
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile gradleApi()
+  compile localGroovy()
+
+  testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
+    exclude module: 'groovy-all'
+  }
+  testCompile 'junit:junit:4.12'
+
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7 // This is the minimum jdk version needed for building a project using these plugins
+
+group = 'not.so.important'
+version = '1.0.3.0-SNAPSHOT'
+
+validateTaskProperties {
+  failOnWarning = true
+}
+
+test {
+  testLogging {
+    exceptionFormat "full"
+  }
+}
+
+gradlePlugin {
+  plugins {
+    somePlugin {
+      id = "some-plugin"
+      implementationClass = "not.so.important.SomePlugin"
+    }
+  }
+}
